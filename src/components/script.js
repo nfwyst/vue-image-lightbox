@@ -12,6 +12,11 @@ export default {
       required: true,
     },
 
+    allImagesCount: {
+      type: Number,
+      required: true,
+    },
+
     disableScroll: {
       type: Boolean,
       default: true,
@@ -178,6 +183,10 @@ export default {
 
     nextImage() {
       this.$set(this, 'select', (this.select + 1) % this.countImages)
+      this.$emit('next', {
+        currentIndex: this.select + 1,
+        allImagesCount: this.countImages
+      })
     },
 
     previousImage() {
